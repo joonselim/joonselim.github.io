@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>joonluvschipotle.github.io</title>
+  <style>
+    :root{
+      /* Dark navy / blue theme */
+      --bg-dark:#071026;       /* page background */
+      --bg-gradient-start:#071026;
+      --bg-gradient-end:#071933;
+      --card:#0f1724;         /* card background */
+      --muted:#9fb0c8;        /* muted text */
+      --text:#e6eef8;         /* primary text */
+      --accent:#2b6df6;       /* blue accent (navy-blue feel) */
+      --accent-2:#164b8b;     /* deeper navy for subtle elements */
+      --section-pad:80px;
+      --radius:14px;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--text);
+    }
+
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg-gradient-start),var(--bg-gradient-end));}
+    a{color:var(--accent);text-decoration:none}
+    .container{
+      max-width:980px;margin:40px auto;padding:30px;
+    }
+
+    header{
+      display:flex;align-items:center;gap:20px;justify-content:space-between;
+      margin-bottom:30px;
+    }
+    .brand{
+      display:flex;align-items:center;gap:16px;
+    }
+    .avatar{
+      width:66px;height:66px;border-radius:12px;flex-shrink:0;
+      background:linear-gradient(135deg,var(--card),#0b2239);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow: 0 8px 26px rgba(2,6,15,0.6);
+    }
+    .name{
+      font-weight:700;font-size:18px;color:var(--text);
+    }
+    .sub{color:var(--muted);font-size:13px;margin-top:4px}
+
+    nav a{margin-left:16px;color:var(--muted);font-size:14px}
+    nav a:hover{color:var(--accent)}
+
+    /* Hero */
+    .hero{
+      background:linear-gradient(180deg,var(--card),#0b1624);
+      border-radius:var(--radius);
+      padding:36px;
+      display:grid;grid-template-columns:1fr 300px;gap:30px;
+      box-shadow:0 12px 40px rgba(2,8,20,0.6);
+      align-items:center;
+    }
+    .hero h1{margin:0;font-size:28px;color:var(--text)}
+    .hero p{color:var(--muted);line-height:1.6}
+    .cta{margin-top:18px;display:flex;gap:10px;align-items:center}
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      background-color: #0047AB;
+      color: #ffffff;
+      text-decoration: none;
+      border: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn:hover {
+      background-color: #7393B3;
+      transform: translateY(-1px);
+    }
+
+    .btn:active {
+      background-color: #1f1f1f;
+      transform: translateY(0);
+    }
+    .secondary{background:transparent;border:1px solid rgba(75,115,220,0.12);color:var(--accent);padding:9px 13px;border-radius:10px}
+
+    .photo-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
+    .photo{
+      width:220px;height:220px;border-radius:14px;overflow:hidden;
+      display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(180deg,#071428,#0b2134);
+      box-shadow:0 14px 40px rgba(2,6,18,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .photo svg{width:140px;height:140px;opacity:0.95}
+
+    /* Sections */
+    section{margin-top:var(--section-pad)}
+    h2{margin:0 0 18px 0;font-size:20px;color:var(--text)}
+    .card{background:linear-gradient(180deg,#0b1220,#0f1724);padding:22px;border-radius:12px;box-shadow:0 12px 30px rgba(2,6,18,0.6);border:1px solid rgba(255,255,255,0.02)}
+
+    /* Experience / Education */
+    .timeline{display:flex;flex-direction:column;gap:18px}
+    .item{padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);background:linear-gradient(180deg,#0f1724,#0b1220)}
+    .item h3{margin:0;font-size:19px;color:var(--text)}
+    .item h4{margin:0;font-size:16px;color:var(--text)}
+    .item .meta{color:var(--muted);font-size:13px;margin-top:6px}
+
+    /* Projects grid */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin-top:8px}
+    .proj{
+      position:relative;overflow:hidden;border-radius:12px;height:180px;
+      display:flex;flex-direction:column;justify-content:flex-end;padding:16px;
+      background:linear-gradient(180deg,#071428,#081728);border:1px solid rgba(50,80,140,0.10);
+      transition:transform .28s ease, box-shadow .28s ease;
+      cursor:pointer;
+    }
+    .proj:hover{transform:translateY(-8px) scale(1.01);box-shadow:0 22px 50px rgba(10,30,70,0.6)}
+    .proj img{position:absolute;right:0;top:0;height:100%;opacity:0.06;object-fit:cover}
+    .proj h4{margin:0 0 6px 0;color:var(--text)}
+    .proj p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Skills */
+    .skills{display:flex;flex-wrap:wrap;gap:12px}
+    .skill {
+      width:86px;
+      height:86px;
+      border-radius:12px;
+      background:linear-gradient(180deg,#0b1624,#0d1b2b);
+      border:1px solid rgba(255,255,255,0.02);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      transition:transform .22s ease, box-shadow .22s ease;
+      text-align:center; /* ✅ 추가: 줄바꿈 텍스트도 중앙 정렬 */
+    }
+    .skill:hover{transform:translateY(-6px);box-shadow:0 14px 36px rgba(8,24,56,0.6)}
+    .skill img{width:40px;height:40px;object-fit:contain;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5))}
+    .skill small{display:block;margin-top:8px;color:var(--muted);font-size:12px}
+
+    /* Links row */
+    .links{display:flex;gap:12px;flex-wrap:wrap}
+    .link-card{
+      display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;
+      border:1px solid rgba(60,100,180,0.06);background:linear-gradient(180deg,#07121f,#0b1a2a);
+    }
+
+    footer{margin-top:40px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* Responsive */
+    @media (max-width:820px){
+      .hero{grid-template-columns:1fr}
+      .photo{width:160px;height:160px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+          <div class="avatar" aria-hidden="false">
+            <img src="profile.png" alt="Joonse Lim 프로필 사진" style="
+              width:66px;
+              height:66px;
+              border-radius:12px;
+              object-fit:cover;
+              box-shadow:0 6px 18px rgba(2,6,15,0.5);
+            ">
+          </div>
+        <div>
+          <div class="name">Joonse Lim</div>
+          <div class="sub">Open for technical roles · Fuqua 2027 MBA Candidate · Former Software Engineer</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <!-- <a href="#projects">Projects</a> -->
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+
+    
+    <main>
+      <section class="hero card" id="about" aria-labelledby="about-title">
+        <div>
+          <h1 id="about-title">Hello! Welcome to my vibe coded website. ☺️</h1>
+          <p>
+            I am Joonse Lim, an MBA candidate and former software engineer passionate about connecting technology and business. I strive to create user-centered, data-driven products that deliver real impact at scale, and <b style="color:white;">I am now transitioning into the product/project management field</b> to bridge technical insight with business strategy.
+          </p>
+          <div class="cta">
+            <a class="btn" href="JoonseLim_resume.pdf" title="Resume (PDF)">see my resume</a>
+            <a class="secondary" href="JoonseLim_cover_letter.pdf" title="Cover Letter (PDF)">see my general cover letter</a>
+            <!-- <span style="color:var(--muted);margin-left:8px;font-size:13px">LinkedIn 프로필과 외부 링크는 아래에 있습니다.</span> -->
+          </div>
+        </div>
+        <div class="photo-wrap" aria-hidden="false">
+          <div class="photo" role="img" aria-label="Joonse Lim 프로필 사진">
+            <img src="head.png" alt="Joonse Lim 프로필 사진" style="
+              width:100%;
+              height:100%;
+              object-fit:cover;
+              border-radius:14px;
+            ">
+          </div>
+          <!-- <div style="text-align:center">
+            <div style="font-weight:600;color:var(--text)">213-278-9295</div>
+            <div class="sub">213-278-9295 · joonse.lim@gmail.edu</div>
+          </div> -->
+        </div>
+      </section>
+
+      <!-- <section id="projects">
+        <h2>대표 프로젝트</h2>
+        <div class="card">
+          All of the projects below are done via vibe-coding!
+          <div class="projects" role="list">
+            <div class="proj" role="listitem" tabindex="0" aria-label="Project 1">
+              <img src="" alt="" aria-hidden="true" />
+              <h4>AI 기반 진단 서비스</h4>
+              <p>사용자 입력을 간소화한 회귀 모델로 정확도 유지 및 프로토타입 론칭. 공공 계약 수주.</p>
+            </div>
+
+            <div class="proj" role="listitem" tabindex="0" aria-label="Project 2">
+              <img src="" alt="" aria-hidden="true" />
+              <h4>대규모 투자 플랫폼 개선</h4>
+              <p>핀테크 서비스의 성능 개선과 개인화 추천을 통해 자산 성장 기여.</p>
+            </div>
+
+            <div class="proj" role="listitem" tabindex="0" aria-label="Project 3">
+              <img src="" alt="" aria-hidden="true" />
+              <h4>레거시 시스템 모듈화 프로젝트</h4>
+              <p>모듈화 전략으로 마이그레이션 리스크를 줄이고 유지보수 비용을 절감.</p>
+            </div>
+          </div>
+        </div>
+        <p style="color:var(--muted);margin-top:10px;font-size:13px">
+        </p>
+      </section> -->
+<!--What I can do: I can~~ I can~~ for your company!-->
+<!--These days, I am concentrating on-->
+
+      <section id="experience">
+        <h2>Education</h2>
+        <div class="card timeline" role="list">
+          <!-- ensure each element sits on its own row -->
+          <div class="item" role="listitem">
+            <h3>Fuqua School of Business. Duke University</h3>
+            <div class="meta">Master of Business Administration · May 2027</div>
+            <div style="margin-top:8px;color:var(--muted);font-size:14px">
+              Merit-based scholarship · GMAT FE 695 (98%) <br> Tech Club Industry Education Cabinet. Asian Business Club Admissions Cabinet. Finance Club, Blockchain Club
+            </div>
+            <div style="margin-top:8px;color:var(--muted);font-size:14px">
+            </div>
+            <br>
+
+            <h3>College of Informatics. Korea University</h3>
+            <div class="meta">Computer Science and Engineering · July 2021</div>
+            <div style="margin-top:8px;color:var(--muted);font-size:14px">
+              Activities: Class Representative, Student Government of Dept. | Dev Team Lead, CatDog Game Club
+              <br>Awards: 4th Place, UCPC (National Algorithm Competition) | Bronze Prize, Nexon Game Design Competition
+              <br>Internships: Product Manager, Vingle (Media) | Research Analytics, S-Core (Consulting, assisted in focus group interviews)
+            </div>
+            <div style="margin-top:8px;color:var(--muted);font-size:14px">
+            </div>
+
+
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2>Professional Experience</h2>
+        <div class="card timeline" role="list">
+          <div class="item" role="listitem">
+            <h3>Shinhan Bank</h3>
+            <h4>Senior Software Developer (Investment Service Project Lead)</h4>
+            <div class="meta">Jan 2024 – Apr 2025 · Seoul</div>
+            <ul style="margin-top:8px;color:var(--muted);line-height:1.6">
+              <li>Delivered impact to 17.9M users and 100M+ daily investment transactions by coordinating cross-functional teams during a 4-year core banking transformation, aligning product vision with technical execution and business outcomes.</li>
+              <li>Reached 10M+ MAUs by identifying pain points in branch-only fund products and developing mobile investment features that expanded digital accessibility, guided user acceptance testing (UAT), and improved satisfaction.</li>
+              <li>Drove an 8% improvement in system scalability through data analytics, identifying performance bottlenecks across ~400M monthly inflows and improving reliability and user experience at scale.</li>
+              <li>Generated $1M+ in new sales by launching the Youth Fund initiative, transforming a government policy into a mobile-first product through collaboration with product, marketing, and engineering teams.</li>
+              <li>Secured approval for a $3M digital transformation project by delivering clear executive reports, communicating detailed process impacts, and ensuring critical stakeholder alignment on complex system changes.</li>
+            </ul>
+            <h4>Software Developer (Financial Service)</h4>
+            <div class="meta">Aug 2021 – Jan 2024 · Seoul</div>
+            <ul style="margin-top:8px;color:var(--muted);line-height:1.6">
+              <li>Engineered national-scale digital pension and fund services that supported $3B in asset growth, including AI-driven personalization, crisis-resolution systems, and regulatory-compliant infrastructure.</li>
+              <li>Deployed AI-driven personalization features in the Retirement Pension after analyzing customer investment behaviors, automating fund recommendations and achieving a 13% YoY increase in customer assets.</li>
+              <li>Resolved $130M in crisis transactions by developing a redemption service for the Lime Fund case, executing court-mandated compliance through SQL-based workflows and restoring customer trust.</li>
+              <li>Generated $1M+ in new sales by launching the Youth Fund initiative, transforming a government policy into a mobile-first product through collaboration with product, marketing, and engineering teams.</li>
+              <li>Reduced NAV load time by 40% (1.2s to 0.7s) by integrating third-party market data provider KG Zeroin for foreign fund pricing, exceeding Financial Supervisory Service standards and improving reliability during audits.</li>
+            </ul>
+          </div>
+
+          <div class="item" role="listitem">
+            <h3>FORCS (e-document service)</h3>
+            <h4>Server Developer (Military Service Alternative)</h4>
+            <div class="meta">Jun 2017 – Sep 2019 · Seoul</div>
+            <div style="margin-top:8px;color:var(--muted);font-size:14px">
+              Served as a developer under Korea's military service alternative program, contributing across product development, strategy, management, marketing, and client communications for global SaaS expansion.
+            </div>
+              <ul style="margin-top:8px;color:var(--muted);line-height:1.6">
+              <li>Server: Drove the backend transition of a legacy PaaS solution into a scalable SaaS platform, prioritizing the feature backlog to strategically balance technical scalability with anticipated customer adoption needs.</li>
+              <li>Product: Built the English-language website and marketing assets, prioritizing limited resources across development, documentation, and client engagement to enable the Singapore prototype product release.</li>
+              <li>Market Research: Conducted competitive analysis of global e-signature players (e.g., DocuSign, ModuSign), evaluating market opportunities, penetration strategies, and product positioning to inform SaaS expansion roadmap.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="card">
+          <h3 style="margin-top:0;margin-bottom:12px;color:var(--text)">Technical Tools & Languages</h3>
+          <div class="skills" aria-label="Technical skills">
+            <!--SQL, Data Analytics, Pandas, Django, Vue, React, Node, Algorithm, Data Structure, Machine Learning (scikit-learn)-->
+              <!--Working Backwards, PR/FQA Writing, Product Roadmap Development, Customer Research, Agile/Scrum-->
+            <div class="skill" title="SQL">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>SQL</text></svg>" alt="SQL"/>
+              <small>SQL</small>
+            </div>
+            <div class="skill" title="Python">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Py</text></svg>" alt="Python"/>
+              <small>Python</small>
+            </div>
+            <div class="skill" title="Django">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Django</text></svg>" alt="Django"/>
+              <small>Django</small>
+            </div>
+            <div class="skill" title="Pandas">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Pandas</text></svg>" alt="Pandas"/>
+              <small>Pandas</small>
+            </div>
+            <div class="skill" title="React">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>React</text></svg>" alt="React"/>
+              <small>React</small>
+            </div>
+            <div class="skill" title="Sci-kit learn">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>sci-kit</text></svg>" alt="Sci-kit learn"/>
+              <small>sci-kit learn</small>
+            </div>
+            <div class="skill" title="Java">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Java</text></svg>" alt="Java"/>
+              <small>Java</small>
+            </div>
+            <div class="skill" title="C">
+              <img src="data:image/svg+xml;utf8,
+              <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
+                <rect width='64' height='64' rx='10' fill='%23071227'/>
+                <text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>C</text>
+              </svg>" alt="C"/>
+              <small>C</small>
+            </div>
+
+
+            <!-- 필요 시 더 추가 -->
+          </div>
+
+          <h3 style="margin-top:18px;color:var(--text)">Skills</h3>
+          <div class="skills" aria-label="Other skills" style="margin-top:8px">
+            <div class="skill" title="Product Roadmap">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Road</text></svg>" alt="Roadmap"/>
+              <small>Roadmap</small>
+            </div>
+            <div class="skill" title="Customer Research">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Cust</text></svg>" alt="Research"/>
+              <small>Customer Research</small>
+            </div>
+            <div class="skill" title="PR/FQA Writing">
+              <img src="data:image/svg+xml;utf8,
+              <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
+                <rect width='64' height='64' rx='10' fill='%23071227'/>
+                <text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>PR</text>
+              </svg>" alt="PR/FQA Writing"/>
+              <small style="display:flex;flex-direction:column;align-items:center;line-height:1.2;">PR/FQA<br>Writing</small>
+            </div>
+            <div class="skill" title="Agile / Scrum">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Agile</text></svg>" alt="Agile"/>
+              <small>Agile/<br>Scrum</small>
+            </div>
+            <div class="skill" title="Data Structure">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>DS</text></svg>" alt="Data Structure"/>
+              <small>Data<br>Structure</small>
+            </div>
+            <div class="skill" title="Data Analytics">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>DA</text></svg>" alt="Data Analytics"/>
+              <small>Data<br>Analytics</small>
+            </div>
+            <div class="skill" title="Machine Learning" style="text-align:center;">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>ML</text></svg>" alt="Machine Learning"/>
+              <small>Machine Learning</small>
+            </div>
+            <div class="skill" title="Algorithm">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Algo</text></svg>" alt="Algorithm"/>
+              <small>Algorithm</small>
+            </div>
+            <div class="skill" title="Microsoft Office">
+              <img src="data:image/svg+xml;utf8,
+              <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
+                <rect width='64' height='64' rx='10' fill='%23071227'/>
+                <text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Office</text>
+              </svg>" alt="Microsoft Office"/>
+              <small style="display:flex;flex-direction:column;align-items:center;line-height:1.2;">Microsoft<br>Office</small>
+            </div>
+            <div class="skill" title="Zapier">
+              <img src="data:image/svg+xml;utf8,
+              <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
+                <rect width='64' height='64' rx='10' fill='%23071227'/>
+                <text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Zapier</text>
+              </svg>" alt="Zapier"/>
+              <small>Zapier<br>Automation</small>
+            </div>
+            <div class="skill" title="Web Programming">
+              <img src="data:image/svg+xml;utf8,
+              <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
+                <rect width='64' height='64' rx='10' fill='%23071227'/>
+                <text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Web</text>
+              </svg>" alt="Web<br>Programming"/>
+              <small style="display:flex;flex-direction:column;align-items:center;line-height:1.2;">Web<br>Programming</small>
+            </div>
+
+            <div class="skill" title="Mobile Programming">
+              <img src="data:image/svg+xml;utf8,
+              <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
+                <rect width='64' height='64' rx='10' fill='%23071227'/>
+                <text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Mobile</text>
+              </svg>" alt="Mobile<br>Programming"/>
+              <small style="display:flex;flex-direction:column;align-items:center;line-height:1.2;">Mobile<br>Programming</small>
+            </div>
+
+            <div class="skill" title="Server Programming">
+              <img src="data:image/svg+xml;utf8,
+              <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
+                <rect width='64' height='64' rx='10' fill='%23071227'/>
+                <text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Server</text>
+              </svg>" alt="Server<br>Programming"/>
+              <small style="display:flex;flex-direction:column;align-items:center;line-height:1.2;">Server<br>Programming</small>
+            </div>
+
+            <div class="skill" title="Documentation">
+              <img src="data:image/svg+xml;utf8,
+              <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
+                <rect width='64' height='64' rx='10' fill='%23071227'/>
+                <text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Doc</text>
+              </svg>" alt="Documentation"/>
+              <small>Documentation</small>
+            </div>
+
+            <div class="skill" title="AI Implementation">
+              <img src="data:image/svg+xml;utf8,
+              <svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'>
+                <rect width='64' height='64' rx='10' fill='%23071227'/>
+                <text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>AI</text>
+              </svg>" alt="AI<br>Implementation"/>
+              <small style="display:flex;flex-direction:column;align-items:center;line-height:1.2;">AI<br>Implementation</small>
+            </div>
+
+          </div>
+        
+
+        <h3 style="margin-top:18px;color:var(--text)">Coming soon</h3>
+          <div class="skills" aria-label="Other skills" style="margin-top:8px">
+            <div class="skill" title="Product Roadmap">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>PM</text></svg>" alt="Roadmap"/>
+              <small>Coursera Google PM</small>
+            </div>
+            <div class="skill" title="Agile / Scrum">
+              <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='%23071227'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-size='18' fill='%232b6df6' font-family='Arial'>Agile</text></svg>" alt="Agile"/>
+              <small>Something else</small>
+            </div>
+          </div>
+        </div>
+        <p style="color:var(--muted);margin-top:10px;font-size:13px">
+          There are more skills and knowledge to come!
+        </p>
+      </section>
+
+
+
+      <section id="contact">
+        <h2>Contacts</h2>
+        <div class="card">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+              <div class="link-card">
+                <!-- email -->
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="opacity:.9" xmlns="http://www.w3.org/2000/svg"><path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5v-11z" stroke="#2b6df6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div>
+                  <div style="font-weight:600;color:var(--text)">e-mail</div>
+                  <div class="sub">joonse.lim@gmail.com</div>
+                </div>
+              </div>
+
+              <a class="link-card" href="https://www.linkedin.com/in/joonse-lim" target="_blank" rel="noopener noreferrer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="opacity:.9" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 0 1 6 6v6h-4v-6a2 2 0 0 0-2-2 2 2 0 0 0-2 2v6h-4v-12h4v2a4 4 0 0 1 4-2zM2 9h4v12h-4z" stroke="#2b6df6" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div>
+                  <div style="font-weight:600;color:var(--text)">LinkedIn</div>
+                  <div class="sub">linkedin.com/in/joonse-lim</div>
+                </div>
+              </a>
+
+              <!-- <a class="link-card" href="https://github.com/your-github" target="_blank" rel="noopener noreferrer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="opacity:.9" xmlns="http://www.w3.org/2000/svg"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.61-3.37-1.34-3.37-1.34-.45-1.17-1.1-1.48-1.1-1.48-.9-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.9.83.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.41.1 2.66.64.7 1.03 1.6 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.85v2.74c0 .26.18.58.69.48A10 10 0 0 0 12 2z" fill="#2b6df6"/></svg>
+                <div>
+                  <div style="font-weight:600;color:var(--text)">GitHub</div>
+                  <div class="sub">github.com/your-github</div>
+                </div>
+              </a>
+
+              <a class="link-card" href="https://www.kaggle.com/your-kaggle" target="_blank" rel="noopener noreferrer">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="opacity:.9" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="#2b6df6" stroke-width="1.2"/></svg>
+                <div>
+                  <div style="font-weight:600;color:var(--text)">Kaggle</div>
+                  <div class="sub">kaggle.com/your-kaggle</div>
+                </div>
+              </a> -->
+            </div>
+
+            <!-- <div style="margin-top:14px;color:var(--muted);font-size:13px">
+              이력서 및 커버레터 원본:
+              <a href="/mnt/data/Joonse Lim_resume.pdf">/mnt/data/Joonse Lim_resume.pdf</a> :contentReference[oaicite:0]{index=0}
+              ,
+              <a href="/mnt/data/waymo_cover_letter.docx">/mnt/data/waymo_cover_letter.docx</a> :contentReference[oaicite:1]{index=1}
+            </div> -->
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> Joonse Lim — This page has been generated by AI.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // accessible keyboard interaction for project cards (hover-like on focus)
+    document.querySelectorAll('.proj').forEach(function(card){
+      card.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){
+          // 예시 동작: 외부 상세 페이지로 이동(또는 모달)
+          alert('프로젝트 상세 보기 동작을 여기에 연결하세요.');
+        }
+      });
+    });
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(function(a){
+      a.addEventListener('click', function(e){
+        // 기본 동작은 유지하되 부드러운 스크롤
+        e.preventDefault();
+        var id = this.getAttribute('href').slice(1);
+        var el = document.getElementById(id);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+  </script>
+</body>
+</html>
