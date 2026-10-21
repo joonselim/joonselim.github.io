@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GraspGrade: Hackathon Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2F4F6; --ink:#18202B; --muted:#5A6573; --rule:#D3D9E0;
+  --touch:#C9861A; --track:#2E5FB8; --surface:#FFFFFF;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#141A22; --ink:#E6EAF0; --muted:#9AA5B3; --rule:#2B3542;
+    --touch:#E2A743; --track:#7FA6EE; --surface:#1B232D;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#141A22; --ink:#E6EAF0; --muted:#9AA5B3; --rule:#2B3542;
+  --touch:#E2A743; --track:#7FA6EE; --surface:#1B232D;
+  color-scheme:dark;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"Newsreader",Georgia,"Times New Roman",serif;
+  font-size:1.125rem; line-height:1.65;
+}
+main{max-width:44rem; margin:0 auto; padding:3.5rem 1.25rem 4rem}
+h1,h2,th,.label,.step b,.meta{font-family:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1{font-size:clamp(2.6rem,8vw,4.2rem); font-weight:800; letter-spacing:-.03em; line-height:1; margin:0}
+.sub{font-family:"Schibsted Grotesk",system-ui,sans-serif; font-weight:500; font-size:1.15rem; color:var(--muted); margin:.5rem 0 0}
+.meta{font-size:.85rem; color:var(--muted); margin-top:1.25rem}
+h2{font-size:1.35rem; font-weight:700; letter-spacing:-.01em; margin:3rem 0 .75rem}
+p{margin:0 0 1rem}
+a{color:var(--track); text-underline-offset:.18em}
+a:focus-visible{outline:2px solid var(--track); outline-offset:2px; border-radius:2px}
+
+/* hero timeline */
+.timeline{margin:2.5rem 0 .5rem}
+.timeline svg{display:block; width:100%; height:auto}
+.legend{display:flex; flex-wrap:wrap; gap:1.25rem; font-family:"Schibsted Grotesk",system-ui,sans-serif; font-size:.8rem; color:var(--muted)}
+.legend span::before{content:""; display:inline-block; width:.9rem; height:.5rem; border-radius:2px; margin-right:.4rem; vertical-align:middle}
+.legend .g::before{background:var(--touch)}
+.legend .v::before{background:var(--track)}
+
+.lede{font-size:1.3rem; line-height:1.5}
+ol.build{list-style:none; padding:0; margin:0; counter-reset:s}
+ol.build li{counter-increment:s; position:relative; padding:0 0 1rem 2.4rem}
+ol.build li::before{content:counter(s); position:absolute; left:0; top:.15rem; width:1.6rem; height:1.6rem; border-radius:50%; border:1.5px solid var(--track); color:var(--track); font:700 .85rem/1.45rem "Schibsted Grotesk",system-ui,sans-serif; text-align:center}
+
+.scroll{overflow-x:auto; margin:0 0 1.25rem; border-top:2px solid var(--ink)}
+table{border-collapse:collapse; width:100%; min-width:32rem; font-size:1rem; line-height:1.5}
+th{font-size:.85rem; font-weight:700; text-align:left; color:var(--muted); padding:.6rem .75rem .6rem 0; border-bottom:1px solid var(--rule)}
+td{vertical-align:top; padding:.75rem .75rem .75rem 0; border-bottom:1px solid var(--rule)}
+td:first-child{font-family:"Schibsted Grotesk",system-ui,sans-serif; font-weight:700; white-space:nowrap}
+
+.days{list-style:none; padding:0; margin:0; border-left:2px solid var(--rule)}
+.days li{position:relative; padding:0 0 1rem 1.25rem}
+.days li::before{content:""; position:absolute; left:-6px; top:.55rem; width:10px; height:10px; border-radius:50%; background:var(--paper); border:2px solid var(--touch)}
+.days li:last-child::before{background:var(--touch)}
+.step b{font-size:.95rem; display:block}
+
+.limits{background:var(--surface); border-left:3px solid var(--touch); padding:1rem 1.25rem; border-radius:0 6px 6px 0}
+.limits p{margin:0}
+ul.src{padding-left:1.1rem}
+footer{margin-top:3rem; font-family:"Schibsted Grotesk",system-ui,sans-serif; font-size:.8rem; color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){
+  .bar{transform-origin:left; animation:grow .9s cubic-bezier(.2,.7,.2,1) both}
+  .bar.v{animation-delay:.35s}
+  @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>GraspGrade</h1>
+    <p class="sub">Hackathon proposal</p>
+    <p class="meta">October 21, 2026, Joonse Lim</p>
+
+    <figure class="timeline" aria-label="Example: touch glove signal and video estimate of contact on the same timeline">
+      <svg viewBox="0 0 640 96" role="img">
+        <line x1="0" y1="20" x2="640" y2="20" stroke="var(--rule)" stroke-width="2"/>
+        <line x1="0" y1="64" x2="640" y2="64" stroke="var(--rule)" stroke-width="2"/>
+        <g fill="var(--touch)">
+          <rect class="bar" x="70" y="12" width="120" height="16" rx="3"/>
+          <rect class="bar" x="290" y="12" width="78" height="16" rx="3"/>
+          <rect class="bar" x="470" y="12" width="132" height="16" rx="3"/>
+        </g>
+        <g fill="var(--track)">
+          <rect class="bar v" x="76" y="56" width="110" height="16" rx="3"/>
+          <rect class="bar v" x="296" y="56" width="82" height="16" rx="3"/>
+          <rect class="bar v" x="462" y="56" width="134" height="16" rx="3"/>
+        </g>
+      </svg>
+      <figcaption class="legend"><span class="g">Touch glove says contact</span><span class="v">Video says contact</span><span>Illustration, not a result</span></figcaption>
+    </figure>
+  </header>
+
+  <h2>In one line</h2>
+  <p class="lede">GraspGrade takes first-person videos of hands using objects, cuts them into clips at the moment of contact, and gives each clip a score for how likely it is that a robot hand can copy it.</p>
+  <p>We check two things with real ground truth, not with our own guesses. The contact cut is checked against a touch-sensing glove. The robot score is checked against motion capture data from Meta HOT3D.</p>
+  <p>Theme: Push the Frontier (robotics).</p>
+
+  <h2>The problem</h2>
+  <p>Robot hand teams want human video because there is so much of it and it is cheap. But most of it is not usable for teaching a robot hand.</p>
+  <p>Fingers get hidden, the camera shakes, and from video alone it is hard to tell when the hand really touches the object.</p>
+  <p>Papers that clean internet hand video report that only a small share of clips survive their filters. Each team writes its own filter, and they usually list the reasons for dropping a clip but do not give a score that others can reuse.</p>
+  <p>Today the simple option is to ask a vision model “is this clip usable?” with no fixed rules. We think a clear checklist, checked against real sensor data, can do better. We want to measure if that is true.</p>
+
+  <h2>What we will build</h2>
+  <p>Three parts, all running on video only.</p>
+  <ol class="build">
+    <li><b>Cut at contact.</b> SAM 3.1 tracks the hand and the objects. Their overlap gives a contact signal, and Muse Spark picks the exact first and last touch frame. Each touch becomes one clip.</li>
+    <li><b>Score each clip.</b> Seven checks, such as hidden fingers, camera shake, and whether the hand shape fits a robot hand, combined into a 0 to 100 score.</li>
+    <li><b>A simple viewer.</b> A web page with clips sorted by score, a contact timeline, and a score card for each clip.</li>
+  </ol>
+
+  <h2>Where Meta models and data come in</h2>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>Piece</th><th>What it does in GraspGrade</th></tr></thead>
+      <tbody>
+        <tr><td>SAM 3.1</td><td>Tracks the hand and each object across the video.</td></tr>
+        <tr><td>Muse Spark</td><td>Picks the exact touch frames. Also the baseline we try to beat.</td></tr>
+        <tr><td><a href="https://www.projectaria.com/datasets/hot3D/">HOT3D</a> (Project Aria)</td><td>Motion capture of hands and objects. Our ground truth for whether a robot hand can copy a clip.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>What we will measure</h2>
+  <p>Two numbers. Each one has its own ground truth, so one answers “when” and the other answers “can a robot do it”.</p>
+  <div class="scroll">
+    <table>
+      <thead><tr><th>#</th><th>Question</th><th>Ground truth</th><th>Data</th><th>What we compare</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>From video alone, how well do we find when the touch starts and ends?</td><td>Touch glove signal</td><td><a href="https://huggingface.co/datasets/OpenGraphLabs-Research/ego-tactile-manipulation">OpenGraph Ego-Tactile</a>: 72 episodes, 1.28 hours, both hands, CC-BY-4.0</td><td>Muse Spark alone vs SAM 3.1 rule vs SAM 3.1 plus Muse Spark check. Boundary F1 at two time windows, and contact IoU.</td></tr>
+        <tr><td>2</td><td>Does our score pick clips a robot hand can copy?</td><td>Motion capture hand pose mapped to an Allegro hand, then checked against the 3D object model</td><td><a href="https://www.projectaria.com/datasets/hot3D/">HOT3D</a> clips</td><td>Our score vs Muse Spark asked the same question with no checklist. AUC, and share of good clips in our top 20% vs the base rate.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><b>How we label a clip as “copyable” in HOT3D.</b> We take the motion capture hand, map it to the Allegro hand with dex-retargeting, and put the Allegro wrist where the human wrist is. In the contact frames, the clip counts as copyable if the thumb and at least one other robot fingertip are close to the object surface and no fingertip goes deep into the object. We fix the distance limits on the tuning split before we look at the test split.</p>
+  <p>All tuning uses a separate split, and every number we report comes from held-out data.</p>
+
+  <h2>10-day plan</h2>
+  <p>The build is mostly glue between tools that already exist (SAM 3.1, Muse Spark, MediaPipe, dex-retargeting, the HOT3D toolkit). The hard part is the measurement, so most days go there.</p>
+  <ol class="days">
+    <li class="step"><b>Day 1 to 2</b>Download OpenGraph and a HOT3D subset, fix the splits, connect SAM 3.1 and Muse Spark, measure cost and speed on one episode.</li>
+    <li class="step"><b>Day 3 to 4</b>Contact cutting on OpenGraph. Measure the time gap between “looks touched” and “glove feels pressure” and correct for it. Number 1.</li>
+    <li class="step"><b>Day 5 to 6</b>HOT3D labels. Undistort the fisheye frames, run motion capture hands through dex-retargeting, check fingertips against object models.</li>
+    <li class="step"><b>Day 7</b>The seven checks and the baseline on HOT3D clips. Learn weights. Number 2.</li>
+    <li class="step"><b>Day 8 to 9</b>Viewer, demo video, README.</li>
+    <li class="step"><b>Day 10</b>Final check and submit before noon ET.</li>
+  </ol>
+
+  <h2>Limits we know about</h2>
+  <div class="limits"><p>Our robot check is geometric, not a physics test. We test one robot hand, the Allegro. We test on lab data first.</p></div>
+
+  <h2>Sources</h2>
+  <ul class="src">
+    <li><a href="https://www.projectaria.com/datasets/hot3D/">HOT3D dataset page</a></li>
+    <li><a href="https://huggingface.co/datasets/OpenGraphLabs-Research/ego-tactile-manipulation">OpenGraph Ego-Tactile Manipulation</a></li>
+    <li><a href="https://github.com/dexsuite/dex-retargeting">dex-retargeting</a></li>
+  </ul>
+</main>
+</body>
+</html>
