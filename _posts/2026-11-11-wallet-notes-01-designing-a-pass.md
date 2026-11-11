@@ -15,10 +15,7 @@ A pass is a digital ticket or card you keep in Wallet, like a boarding pass, con
 
 I used a concert ticket as an example to understand how a pass is organized. The main information goes on the front, with supporting details like the venue and seat below it. Less frequently needed information, such as terms and conditions, goes on the back.
 
-<div class="frames two">
-  <img src="{{ img }}s10.jpg" alt="The front of a concert ticket pass with its fields highlighted">
-  <img src="{{ img }}s11.jpg" alt="The back of the pass with terms and conditions">
-</div>
+{% include wallet/pass-anatomy.html %}
 
 ## Fields and semantic tags
 
