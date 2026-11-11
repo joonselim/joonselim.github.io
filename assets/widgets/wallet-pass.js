@@ -43,7 +43,7 @@
     {
       id: 'event', name: 'Aurora Live event ticket',
       bg: 'linear-gradient(160deg,#7b2ff7 0%,#3a1290 45%,#16063a 100%)', mark: 'conic-gradient(#ff7ab6,#9db8ff,#7b2ff7,#ff7ab6)',
-      logo: 'Nightshift', header: ['Date', 'Nov 21'],
+      logo: 'Nightshift', header: ['Date', 'NOV 21'],
       primary: ['Event', 'Aurora Live'],
       secondary: [['Venue', 'Pier 39 Hall'], ['Doors', '7:00 PM']],
       auxiliary: [['Section', 'B'], ['Row', '12'], ['Seat', '8']],

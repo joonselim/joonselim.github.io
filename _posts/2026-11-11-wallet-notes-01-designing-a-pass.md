@@ -29,16 +29,22 @@ One thing I found interesting was the difference between pass fields and semanti
 
 There's also more to think about after someone adds a pass. Details may change, the pass may become relevant at a particular time or place, and eventually it expires. A boarding pass, for example, needs to stay useful when the gate changes.
 
-<div class="frames single">
-  <img src="{{ img }}s22.jpg" alt="Adding a pass, surfacing it on the Lock Screen, and a gate change update">
+<div class="frames two">
+  <img src="{{ img }}s20.jpg" alt="Added: one tap to add, related passes added as a group, and no asking again after a decline">
+  <img src="{{ img }}s21.jpg" alt="Relevant: the pass appears on the Lock Screen at the right time and place">
+  <img src="{{ img }}s22.jpg" alt="Updated: a gate change from B12 to C4, for time-critical info only, never marketing">
+  <img src="{{ img }}s23.jpg" alt="Expired: an expiration date hides old passes, and removing a pass asks first">
 </div>
 
 ## Design rules
 
 The design guidelines were straightforward: keep the front simple, make the text easy to read, and avoid putting text inside images. Wording also needs to work across devices, including Apple Watch.
 
-<div class="frames single">
-  <img src="{{ img }}s27.jpg" alt="Good and bad examples: a clean front, enough contrast, and no text inside images">
+<div class="frames two">
+  <img src="{{ img }}s25.jpg" alt="Clean: a front crowded with text versus a simple front">
+  <img src="{{ img }}s26.jpg" alt="Contrast: low-contrast text versus readable white text">
+  <img src="{{ img }}s27.jpg" alt="No text in images: a SALE image versus an image with a separate text field">
+  <img src="{{ img }}s28.jpg" alt="Every device: 'Slide to view' works on iPhone but not on Apple Watch">
 </div>
 
 ## What's next
