@@ -5,7 +5,7 @@ description: Notes from studying the Wallet passes section of Apple's Human Inte
 
 {% assign img = '/assets/posts/wallet-passes/' | relative_url %}
 
-I've been studying Apple Pay and payment systems. I started with the Wallet passes section of Apple's [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/wallet) and put together a [short video](https://youtube.com/shorts/-ApgO4RqhOs) about what I learned.
+I've been studying Apple Pay and payment systems. I started with the Wallet passes section of Apple's [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/wallet) and put together a short video about what I learned.
 
 ## What a pass is
 
@@ -50,3 +50,5 @@ The design guidelines were straightforward: keep the front simple, make the text
 ## What's next
 
 Going through this made me pay more attention to what belongs on a pass and when someone needs it. Next, I'd like to look at the Apple Pay payment flow.
+
+**Video:** [Wallet Notes 01 on YouTube](https://youtube.com/shorts/-ApgO4RqhOs)
