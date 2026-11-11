@@ -1,5 +1,5 @@
 ---
-title: What's inside an Apple Wallet pass
+title: "Wallet Notes 01: Designing a pass"
 description: Notes from studying the Wallet passes section of Apple's Human Interface Guidelines.
 ---
 
