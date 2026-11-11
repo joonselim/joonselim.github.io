@@ -1,6 +1,8 @@
 ---
 title: "Wallet Notes 01: Designing a pass"
 description: Notes from studying the Wallet passes section of Apple's Human Interface Guidelines.
+redirect_from:
+  - /posts/2026/11/11/wallet-notes-01-designing-a-pass/
 ---
 
 {% assign img = '/assets/posts/wallet-passes/' | relative_url %}

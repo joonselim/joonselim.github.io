@@ -3,7 +3,7 @@ description: Notes on Apple Wallet and Apple Pay, from design to code.
 url: https://joonselim.github.io
 baseurl: ""
 lang: en
-permalink: /posts/:year/:month/:day/:title/
+permalink: /posts/:title/
 markdown: kramdown
 kramdown:
   input: GFM
@@ -25,3 +25,5 @@ defaults:
       type: posts
     values:
       layout: post
+plugins:
+  - jekyll-redirect-from
