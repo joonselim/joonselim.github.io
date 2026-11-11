@@ -1,0 +1,27 @@
+title: Joonse Lim
+description: Notes on what I build and learn
+url: https://joonselim.github.io
+baseurl: ""
+lang: en
+permalink: /posts/:year/:month/:day/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+highlighter: rouge
+google_analytics: G-W2HC2LW3XH
+links:
+  - name: GitHub
+    url: https://github.com/joonselim
+  - name: LinkedIn
+    url: https://www.linkedin.com/in/joonse-lim/
+  - name: Portfolio
+    url: https://portfolio-web-beta-lovat.vercel.app/
+exclude:
+  - README.md
+  - .claude
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
