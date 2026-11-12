@@ -5,9 +5,9 @@ description: How a pass gets into Wallet, and the rules Apple's Human Interface 
 
 In the last post I looked at what a pass is made of. This time I kept reading the Wallet section of Apple's [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/wallet) with one question in mind: how does a pass actually get into Wallet? There are a few ways in, and Apple has a rule for each one.
 
-<div class="frames single">
-  <img src="{{ '/assets/posts/wallet-notes-02/ways-in.jpg' | relative_url }}" alt="Four ways a pass gets into Wallet: from an app, from the web, automatically, and from email">
-</div>
+<figure class="post-figure">
+  <img src="{{ '/assets/posts/wallet-notes-02/ways.png' | relative_url }}" alt="Sketch of four ways a pass gets into Wallet: in the app with one tap, from the web or another device with one suggestion, automatically after saying yes once, and from an email or web page with an Add to Apple Wallet badge">
+</figure>
 
 ## One tap
 
@@ -34,5 +34,9 @@ Once the pass is in Wallet, the app can offer a link that jumps right to it, lik
 ## What I took away
 
 Add it once, add it together, and never nag. Most of these rules are about getting the pass to people without getting in their way.
+
+<figure class="post-figure">
+  <img src="{{ '/assets/posts/wallet-notes-02/rules.png' | relative_url }}" alt="Sketch of three rules: add it once with one tap, add connecting boarding passes together, and never nag after someone says not now">
+</figure>
 
 **Video:** [Wallet Notes 02 on YouTube](https://youtube.com/shorts/g2HgOZN8Gto)
