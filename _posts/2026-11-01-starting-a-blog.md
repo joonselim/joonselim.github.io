@@ -4,19 +4,6 @@ redirect_from:
   - /posts/2026/11/11/hello-world/
 ---
 
-This blog runs on GitHub Pages and Jekyll. To publish a new post, add a Markdown file to `_posts/` named `YYYY-MM-DD-title.md`, and it shows up on the home page automatically.
+I've built and planned a lot of things so far, some as a developer and some on the planning side. But I never kept a record of them. Some of that work is simply lost now, and much of what I learned I've forgotten because I never went back to review it.
 
-## What I plan to write about
-
-- Projects I'm building
-- Notes from things I'm learning
-- The occasional stray thought
-
-Code blocks work too:
-
-```python
-def hello():
-    print("Hello, blog!")
-```
-
-> The goal is to keep writing.
+So I'm starting this blog. I want to write things down as I go, so I can keep track of what I've done and come back to it later.
