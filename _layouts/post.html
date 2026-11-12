@@ -3,6 +3,8 @@ layout: default
 ---
 <article class="post">
   <header class="post-header">
+    {% assign cat = site.post_categories | where: "key", page.categories.first | first %}
+    {% if cat %}<p class="post-category"><a href="{{ '/' | relative_url }}#{{ cat.key }}">{{ cat.name }}</a></p>{% endif %}
     <h1>{{ page.title }}</h1>
     <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%b %-d, %Y' }}</time>
   </header>

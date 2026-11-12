@@ -1,5 +1,6 @@
 ---
 title: Starting a blog
+category: general
 redirect_from:
   - /posts/2026/11/11/hello-world/
 ---

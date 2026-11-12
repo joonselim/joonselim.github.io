@@ -1,5 +1,6 @@
 ---
-title: "Wallet Notes 02: Adding passes"
+title: "Pay Notes 02: Adding passes"
+category: pay-notes
 description: How a pass gets into Wallet, and the rules Apple's Human Interface Guidelines set for each way in.
 ---
 

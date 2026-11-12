@@ -1,5 +1,6 @@
 ---
 title: "GraspGrade: Finding hand videos a robot can learn from"
+category: project
 description: A project that scores first-person hand videos for how well a robot hand could copy the grasp.
 ---
 
