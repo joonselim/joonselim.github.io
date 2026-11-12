@@ -3,7 +3,7 @@ title: "Wallet Notes 02: Adding passes"
 description: How a pass gets into Wallet, and the rules Apple's Human Interface Guidelines set for each way in.
 ---
 
-In the last post I looked at what a pass is made of. This time I kept reading the Wallet section of Apple's [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/wallet) with one question in mind: how does a pass actually get into Wallet? There are a few ways in, and Apple has a rule for each one.
+There are four ways a pass gets into Wallet, and Apple's [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/wallet) have a rule for each one.
 
 <figure class="post-figure">
   <img src="{{ '/assets/posts/wallet-notes-02/ways.png' | relative_url }}" alt="Sketch of four ways a pass gets into Wallet: in the app with one tap, from the web or another device with one suggestion, automatically after saying yes once, and from an email or web page with an Add to Apple Wallet badge">
