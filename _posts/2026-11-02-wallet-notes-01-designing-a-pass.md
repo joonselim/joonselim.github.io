@@ -25,15 +25,16 @@ One thing I found interesting was the difference between pass fields and semanti
 
 ## After a pass is added
 
-There's also more to think about after someone adds a pass. Details may change, the pass may become relevant at a particular time or place, and eventually it expires. A boarding pass, for example, needs to stay useful when the gate changes.
+There's also more to think about after someone adds a pass. A pass goes through a lifecycle:
 
-{% include wallet/pass-lifecycle.html %}
+- **Added.** When a purchase creates a pass, people can add it with one tap. Related passes, like connecting flights, are added together as a group. If someone declines, the app shouldn't ask again.
+- **Relevant.** The pass knows when and where it matters, so it can show up on the Lock Screen right when it's needed, like a gym membership as you walk in.
+- **Updated.** Details can change. A gate change shows up on the boarding pass right away. Change messages are only for time-critical info, never for marketing.
+- **Expired.** With the right expiration date, Wallet hides old passes on its own. And a pass is never deleted without asking first.
 
 ## Design rules
 
 The design guidelines were straightforward: keep the front simple, make the text easy to read, and avoid putting text inside images. Wording also needs to work across devices, including Apple Watch.
-
-{% include wallet/pass-rules.html %}
 
 ## What's next
 
