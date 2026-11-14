@@ -1,6 +1,6 @@
 ---
-title: "Pay Notes 03: SHA-1 in a .pkpass"
-category: pay-notes
+title: "Tech Notes 01: SHA-1 in a .pkpass"
+category: tech-notes
 description: Apple Wallet passes still use SHA-1. Why a .pkpass needs a hash at all, what SHA-1 does step by step, and why Apple hasn't moved to SHA-256.
 ---
 

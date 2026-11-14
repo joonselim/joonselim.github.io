@@ -14,6 +14,8 @@ post_categories:
     name: Pay Notes
   - key: industry-notes
     name: Industry Notes
+  - key: tech-notes
+    name: Tech Notes
   - key: project
     name: Project
   - key: general
