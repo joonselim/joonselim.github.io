@@ -16,6 +16,8 @@ post_categories:
     name: Industry Notes
   - key: tech-notes
     name: Tech Notes
+  - key: algorithms
+    name: Algorithms
   - key: project
     name: Project
   - key: general
