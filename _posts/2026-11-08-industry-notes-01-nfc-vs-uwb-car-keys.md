@@ -1,6 +1,8 @@
 ---
-title: "Industry Notes 02: NFC vs UWB car keys"
+title: "Industry Notes 01: NFC vs UWB car keys"
 category: industry-notes
+redirect_from:
+  - /posts/industry-notes-02-nfc-vs-uwb-car-keys/
 description: How iPhone car keys work over NFC and over UWB, and why most automakers now choose UWB.
 ---
 

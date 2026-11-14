@@ -1,5 +1,5 @@
 ---
-title: "Industry Notes 01: SE vs HCE"
+title: "Industry Notes 02: SE vs HCE"
 category: industry-notes
 description: Why Apple keeps iPhone NFC closed in the UK, and how a Secure Element compares to Host Card Emulation.
 ---
