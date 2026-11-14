@@ -4,10 +4,6 @@ category: industry-notes
 description: How iPhone car keys work over NFC and over UWB, and why most automakers now choose UWB.
 ---
 
-<figure class="post-figure">
-  <a href="https://developer.apple.com/videos/play/wwdc2020/10006/"><img src="{{ '/assets/posts/industry-notes-02/wwdc20-car-keys.jpg' | relative_url }}" alt="WWDC20 session: Introducing Car Keys"></a>
-</figure>
-
 In 2020, Apple let the iPhone open car doors with NFC ([WWDC20: Introducing Car Keys](https://developer.apple.com/videos/play/wwdc2020/10006/)). In 2021, it added UWB.
 
 Today, let's look at NFC and UWB.
