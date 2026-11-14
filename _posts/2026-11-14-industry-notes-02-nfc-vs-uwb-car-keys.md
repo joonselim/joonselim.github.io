@@ -10,6 +10,10 @@ Today, let's look at NFC and UWB.
 
 ## NFC vs UWB
 
+<figure class="post-figure">
+  <img src="{{ '/assets/posts/industry-notes-02/nfc-vs-uwb.png' | relative_url }}" alt="Sketch: with NFC you tap the phone at the door handle at very short range, with UWB BLE checks the key and UWB measures the distance while the phone stays in your pocket">
+</figure>
+
 | | NFC | UWB (passive entry) |
 |---|---|---|
 | Standard | CCC Digital Key Release 2.0 | CCC Digital Key Release 3.0 |
@@ -26,10 +30,6 @@ Today, most automakers choose UWB, including the 2026 Toyota RAV4 and Rivian.
 NFC is easy to build and easy to use. UWB uses two radios. First, the phone and the car check the key over Bluetooth Low Energy (BLE). Then they start a secure ranging session over UWB. With UWB, the car can measure the distance to the phone accurately and securely, so it knows where the key is.
 
 This came out of relay attacks, which use a signal extender to unlock cars from a distance ([example](https://www.youtube.com/watch?v=5mdU4ksOc2w&t=84s)).
-
-<figure class="post-figure">
-  <img src="{{ '/assets/posts/industry-notes-02/nfc-vs-uwb.png' | relative_url }}" alt="Sketch: with NFC you tap the phone at the door handle at very short range, with UWB BLE checks the key and UWB measures the distance while the phone stays in your pocket">
-</figure>
 
 ## Sources
 
