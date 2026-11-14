@@ -1,7 +1,9 @@
 ---
-title: "Pay Notes 02: Adding passes"
-category: pay-notes
+title: "Adding passes"
+category: apple-wallet
 description: How a pass gets into Wallet, and the rules Apple's Human Interface Guidelines set for each way in.
+redirect_from:
+  - /posts/wallet-notes-02-adding-passes/
 ---
 
 There are four ways a pass gets into Wallet, and Apple's [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/wallet) have a rule for each one.

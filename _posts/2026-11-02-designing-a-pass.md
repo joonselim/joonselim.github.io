@@ -1,8 +1,9 @@
 ---
-title: "Pay Notes 01: Designing a pass"
-category: pay-notes
+title: "Designing a pass"
+category: apple-wallet
 description: Notes from studying the Wallet passes section of Apple's Human Interface Guidelines.
 redirect_from:
+  - /posts/wallet-notes-01-designing-a-pass/
   - /posts/2026/11/11/wallet-notes-01-designing-a-pass/
 ---
 

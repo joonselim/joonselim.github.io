@@ -17,7 +17,8 @@ layout: default
   </nav>
   <ul class="post-list">
     {% for post in site.posts %}
-    <li data-category="{{ post.categories.first }}">
+    <li data-category="{{ post.categories | join: ' ' }}">
+      <span class="num">{{ forloop.rindex }}</span>
       <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
       <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %-d, %Y' }}</time>
     </li>
@@ -39,7 +40,7 @@ layout: default
       if (a.dataset.category === key) a.setAttribute('aria-current', 'true');
       else a.removeAttribute('aria-current');
     });
-    rows.forEach(function (li) { li.hidden = key !== '' && li.dataset.category !== key; });
+    rows.forEach(function (li) { li.hidden = key !== '' && li.dataset.category.split(' ').indexOf(key) === -1; });
   }
   links.forEach(function (a) {
     a.addEventListener('click', function (e) {

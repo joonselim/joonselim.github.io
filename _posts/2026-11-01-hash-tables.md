@@ -1,8 +1,10 @@
 ---
-title: "Algorithms 01: Hash tables"
+title: "Hash tables"
 date: 2026-11-01 12:00:00
 category: algorithms
 description: How a hash table finds a key in one step, what happens on a collision, and why it grows. With interactive demos.
+redirect_from:
+  - /posts/algorithms-01-hash-tables/
 ---
 
 I recently had a coding interview. The problem was to implement a hash table with just two methods, `put` and `get`. I struggled.

@@ -10,16 +10,14 @@ kramdown:
 highlighter: rouge
 google_analytics: G-W2HC2LW3XH
 post_categories:
-  - key: pay-notes
-    name: Pay Notes
-  - key: industry-notes
-    name: Industry Notes
-  - key: tech-notes
-    name: Tech Notes
   - key: algorithms
     name: Algorithms
   - key: project
     name: Project
+  - key: industry
+    name: Industry
+  - key: apple-wallet
+    name: Apple Wallet
   - key: general
     name: General
 links:
