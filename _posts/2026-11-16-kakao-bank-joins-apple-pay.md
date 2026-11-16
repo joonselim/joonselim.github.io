@@ -28,7 +28,7 @@ Here is a $100 payment at a small shop in Korea:
 For shops with sales up to 300 million won a year, the government caps the fee at 0.40% for credit cards and 0.15% for debit cards. Kakao Bank's Apple fee is not public. In the US, Apple takes half a cent per debit payment. Other processing costs are left out.
 
 <figure class="post-figure">
-  <img src="{{ '/assets/posts/kakao-bank-joins-apple-pay/who-pays.png' | relative_url }}" alt="Sketch: you pay 10,000 won, the shop pays the normal merchant fee to the card company, and the card company pays Apple about 0.15% and Visa or Mastercard about 30 won for the token">
+  <img src="{{ '/assets/posts/kakao-bank-joins-apple-pay/who-pays.png' | relative_url }}" alt="Sketch: the customer pays $100, the merchant pays a fee of roughly 0.15 to 0.40% to the card company, and the card company pays Apple about 0.15% and Visa or Mastercard about $0.02 for the token">
 </figure>
 
 ## Sources
