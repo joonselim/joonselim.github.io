@@ -25,13 +25,15 @@ Each node has only `next`. In a doubly linked list, it also has `prev`.
 
 ## LRU cache
 
-An LRU cache keeps the most recently used items, and drops the oldest when full. It combines the [hash table](/posts/hash-tables/) from my last CS post with a doubly linked list.
+An LRU cache keeps the most recently used items, and drops the oldest when full.
 
 - The hash table finds a node in O(1).
 - The doubly linked list keeps the order. The most recent node sits at the front.
 - Because the node knows its `prev`, moving it to the front or dropping the last one is O(1).
 
-I implemented it on [LeetCode](https://leetcode.com/problems/lru-cache/) today.
+LeetCode has [a problem](https://leetcode.com/problems/lru-cache/) for this.
+
+Whether it's `get` or `put`, the used node always has to move to the front of the list. So it's easier to implement `_remove` and `_add_to_front` first, then build `get` and `put` on top of them.
 
 ```python
 class Node:
