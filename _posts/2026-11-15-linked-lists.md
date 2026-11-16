@@ -31,30 +31,59 @@ An LRU cache keeps the most recently used items, and drops the oldest when full.
 - The doubly linked list keeps the order. The most recent node sits at the front.
 - Because the node knows its `prev`, moving it to the front or dropping the last one is O(1).
 
-Here it is in pseudocode.
+I implemented it on [LeetCode](https://leetcode.com/problems/lru-cache/) today.
 
-```
-map = empty hash table          # key -> node
-list = empty doubly linked list # front = most recent
+```python
+class Node:
+    def __init__(self, key: int, value: int):
+        self.key = key
+        self.value = value
+        self.prev = None
+        self.next = None
 
-get(key):
-    if key not in map:
-        return nothing
-    node = map[key]
-    move node to the front of list     # O(1): unlink with prev/next, relink at head
-    return node.value
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.seq = {}
+        self.head = Node(0, 0)
+        self.tail = Node(0, 0)
 
-put(key, value):
-    if key in map:
-        node = map[key]
-        node.value = value
-        move node to the front of list
-        return
-    if size of map == capacity:
-        last = list.tail
-        remove last from list          # O(1) thanks to tail and prev
-        delete map[last.key]
-    node = new node(key, value)
-    add node to the front of list
-    map[key] = node
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def _add_to_front(self, node):
+        first = self.head.next
+        node.next = first
+        node.prev = self.head
+        self.head.next = node
+        first.prev = node
+
+    def _remove(self, node):
+        before = node.prev
+        after = node.next
+        before.next = after
+        after.prev = before
+
+    def get(self, key: int) -> int:
+        if key not in self.seq:
+            return -1
+        node = self.seq[key]
+        self._remove(node)
+        self._add_to_front(node)
+        return node.value
+
+    def put(self, key: int, value: int) -> None:
+        if key in self.seq:
+            node = self.seq[key]
+            self._remove(node)
+            node.value = value
+            self._add_to_front(node)
+        else:
+            node = Node(key, value)
+            self._add_to_front(node)
+            self.seq[key] = node
+            if len(self.seq) > self.capacity:
+                oldest = self.tail.prev
+                self._remove(oldest)
+                del self.seq[oldest.key]
 ```
