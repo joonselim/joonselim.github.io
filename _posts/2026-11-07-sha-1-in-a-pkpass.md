@@ -1,6 +1,6 @@
 ---
 title: "SHA-1 in a .pkpass (Apple Wallet)"
-categories: [apple-wallet, algorithms]
+categories: [apple-wallet, cs-basics]
 description: Apple Wallet passes still use SHA-1. Why a .pkpass needs a hash at all, what SHA-1 does step by step, and why Apple hasn't moved to SHA-256.
 redirect_from:
   - /posts/tech-notes-01-sha-1/

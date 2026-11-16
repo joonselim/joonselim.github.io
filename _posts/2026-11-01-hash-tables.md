@@ -1,7 +1,7 @@
 ---
 title: "Hash tables"
 date: 2026-11-01 12:00:00
-category: algorithms
+category: cs-basics
 description: How a hash table finds a key in one step, what happens on a collision, and why it grows. With interactive demos.
 redirect_from:
   - /posts/algorithms-01-hash-tables/

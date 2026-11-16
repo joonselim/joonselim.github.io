@@ -10,8 +10,8 @@ kramdown:
 highlighter: rouge
 google_analytics: G-W2HC2LW3XH
 post_categories:
-  - key: algorithms
-    name: Algorithms
+  - key: cs-basics
+    name: CS Basics
   - key: project
     name: Project
   - key: industry
