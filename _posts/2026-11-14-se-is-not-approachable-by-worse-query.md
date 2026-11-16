@@ -1,5 +1,5 @@
 ---
-title: "SE is not approachable by worse_query"
+title: "worse_query and how SE is safe from it"
 date: 2026-11-14 12:00:00
 category: industry
 description: Why worse_query can't reach Apple Pay cards in the Secure Element, why HCE apps are mostly fine, and why crypto wallets are the problem.
