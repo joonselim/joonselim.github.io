@@ -1,0 +1,72 @@
+/* Apple Pay on the web: step-through sequence diagram */
+.apf {
+  --apf-panel: #f2f1ed; --apf-card: #fff; --apf-line: #e3e1db;
+  --apf-text: var(--text, #1f1f1f); --apf-dim: var(--muted, #7a7a7a);
+  --apf-blue: #0071e3; --apf-blue-soft: #d6e8fc; --apf-red: #e5484d; --apf-red-soft: rgba(229,72,77,.12);
+  --apf-green: #1f9d55; --apf-ink: #1d1d1f;
+  --apf-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  margin: 2rem 0; padding: 1.1rem; border-radius: 16px; background: var(--apf-panel);
+  color: var(--apf-text); font-size: 15px; line-height: 1.5;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .apf {
+    --apf-panel: #1f1f1f; --apf-card: #262626; --apf-line: #353535;
+    --apf-blue: #4c9dff; --apf-blue-soft: #1d3554; --apf-red: #ff6369; --apf-red-soft: rgba(255,99,105,.15);
+    --apf-green: #3ccf7a; --apf-ink: #f2f2f2;
+  }
+}
+:root[data-theme="dark"] .apf {
+  --apf-panel: #1f1f1f; --apf-card: #262626; --apf-line: #353535;
+  --apf-blue: #4c9dff; --apf-blue-soft: #1d3554; --apf-red: #ff6369; --apf-red-soft: rgba(255,99,105,.15);
+  --apf-green: #3ccf7a; --apf-ink: #f2f2f2;
+}
+.apf * { box-sizing: border-box; }
+.apf button { font: inherit; color: inherit; cursor: pointer; }
+.apf button:disabled { cursor: default; opacity: .45; }
+.apf-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; }
+.apf-seg { display: inline-flex; background: var(--apf-card); border: 1px solid var(--apf-line); border-radius: 999px; padding: 2px; }
+.apf-seg button { border: 0; background: none; border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+.apf-seg button.on { background: var(--apf-ink); color: var(--apf-panel); }
+.apf-btn { background: var(--apf-blue); color: #fff !important; border: 0; border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600; }
+.apf-btn.ghost { background: var(--apf-card); color: var(--apf-text) !important; border: 1px solid var(--apf-line); font-weight: 500; }
+.apf-count { margin-left: auto; font: 12px var(--apf-mono); color: var(--apf-dim); }
+.apf-note { font-size: 13.5px; color: var(--apf-dim); margin: 0; }
+
+/* diagram */
+.apf svg { display: block; width: 100%; height: auto; background: var(--apf-card); border: 1px solid var(--apf-line); border-radius: 12px; }
+.apf .lane-box { fill: var(--apf-panel); stroke: var(--apf-line); }
+.apf .lane-name { font: 600 13px -apple-system, system-ui, sans-serif; fill: var(--apf-text); text-anchor: middle; }
+.apf .life { stroke: var(--apf-line); stroke-dasharray: 3 4; }
+.apf .phase { font: 600 10px var(--apf-mono); fill: var(--apf-dim); letter-spacing: .04em; }
+.apf .phase-line { stroke: var(--apf-line); }
+.apf .msg line, .apf .msg path { stroke: var(--apf-dim); stroke-width: 1.5; fill: none; }
+.apf .msg text { font: 11.5px var(--apf-mono); fill: var(--apf-dim); paint-order: stroke; stroke: var(--apf-card); stroke-width: 4px; stroke-linejoin: round; }
+.apf .msg .head { fill: var(--apf-dim); stroke: none; }
+.apf .msg.cur line, .apf .msg.cur path { stroke: var(--apf-blue); stroke-width: 2; }
+.apf .msg.cur text { fill: var(--apf-blue); font-weight: 600; }
+.apf .msg.cur .head { fill: var(--apf-blue); }
+.apf .msg.bad line, .apf .msg.bad path { stroke: var(--apf-red); }
+.apf .msg.bad text { fill: var(--apf-red); }
+.apf .msg.bad .head { fill: var(--apf-red); }
+.apf .msg.wait line { stroke-dasharray: 5 5; }
+.apf .msg.draw line, .apf .msg.draw path { stroke-dasharray: var(--len); stroke-dashoffset: var(--len); animation: apf-draw .45s ease-out forwards; }
+.apf .msg.draw text, .apf .msg.draw .head, .apf .msg.draw .x { opacity: 0; stroke-dasharray: none; stroke-dashoffset: 0; animation: apf-in .25s .3s forwards; }
+.apf .msg.draw text { stroke-dasharray: none; }
+.apf .x { stroke: var(--apf-red); stroke-width: 2.5; stroke-linecap: round; }
+
+/* caption */
+.apf-cap { margin: 10px 0 0; padding: 10px 12px; min-height: 4.6em; font-size: 14px; background: var(--apf-card); border-left: 3px solid var(--apf-blue); border-radius: 0 8px 8px 0; }
+.apf-cap.bad { border-left-color: var(--apf-red); }
+.apf-cap.ok { border-left-color: var(--apf-green); }
+.apf-cap .tag { display: inline-block; font: 600 10.5px var(--apf-mono); text-transform: uppercase; letter-spacing: .05em; color: var(--apf-dim); margin-right: 6px; }
+.apf-cap code { font-family: var(--apf-mono); font-size: .88em; background: none; padding: 0; }
+
+@keyframes apf-draw { to { stroke-dashoffset: 0; } }
+@keyframes apf-in { to { opacity: 1; } }
+@media (max-width: 560px) {
+  .apf { padding: .9rem .75rem; }
+  .apf-count { margin-left: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .apf * { animation: none !important; opacity: 1 !important; stroke-dashoffset: 0 !important; }
+}

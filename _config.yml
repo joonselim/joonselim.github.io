@@ -16,8 +16,8 @@ post_categories:
     name: Project
   - key: industry
     name: Industry
-  - key: apple-wallet
-    name: Apple Wallet
+  - key: wallet-pay
+    name: Wallet & Pay
   - key: general
     name: General
 links:

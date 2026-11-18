@@ -1,6 +1,6 @@
 ---
 title: "Adding passes"
-category: apple-wallet
+category: wallet-pay
 description: How a pass gets into Wallet, and the rules Apple's Human Interface Guidelines set for each way in.
 redirect_from:
   - /posts/wallet-notes-02-adding-passes/
